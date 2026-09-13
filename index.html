@@ -469,10 +469,314 @@
 </style>
 </head>
 <body>
-
-<header>
+  <header>
   <div class="nav">
     <a class="brand" href="#top">
       <span class="brand-mark" aria-hidden="true">
-        <img src="data:image/png;base64,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
-          
+        <img src="logo.png" alt="" style="width:100%;height:100%;object-fit:contain;">
+      </span>
+      <span class="brand-text">Église Adventiste Jérusalem
+        <small>Saint-Marc, Haïti</small>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Louvri meni" aria-expanded="false" id="navToggle"><span></span></button>
+    <ul class="links" id="navLinks">
+      <li><a href="#byenveni">Byenveni</a></li>
+      <li><a href="#ore">Orè</a></li>
+      <li><a href="#depatman">Depatman</a></li>
+      <li><a href="#evenman">Evènman</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Sabat, jou repo Senyè a</span>
+    <h1>Yon fanmi lafwa ki louvri pòt li pou ou, nan Saint-Marc</h1>
+    <p class="lead">Église Adventiste du 7ème Jour Jérusalem se yon kominote k'ap sèvi Bondye ansanm, nan lanmou, nan pawòl la ak nan sèvis pou pwochen nou.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#ore">Gade orè sèvis yo</a>
+      <a class="btn btn-outline" href="#kontak">Vin vizite nou</a>
+    </div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#F6F4EE" d="M0,64 C240,10 480,10 720,42 C960,74 1200,74 1440,32 L1440,90 L0,90 Z"></path></svg>
+</section>
+
+<section class="welcome" id="byenveni">
+  <div class="wrap welcome-grid">
+    <div>
+      <div class="section-head">
+        <span class="tag">Byenveni</span>
+        <h2>Nou kontan wè ou pami nou</h2>
+      </div>
+      <p>Legliz Jérusalem se yon kay kote tout moun jwenn plas yo — timoun, jèn, granmoun. Nou kwè nan yon lafwa ki vivan, ki pataje, e ki ede chak moun grandi pi pre Bondye chak jou k'ap pase.</p>
+      <p>Kit ou se yon manm depi lontan, kit se premye fwa ou ap vizite nou, pòt legliz la louvri pou ou. Vin adore ansanm avèk nou, tande Pawòl la, epi jwenn yon fanmi.</p>
+      <a class="btn btn-primary" href="#depatman">Dekouvri depatman yo</a>
+    </div>
+    <div class="verse-block">
+      <p>Kote de oswa twa moun sanble nan non mwen, mwen la nan mitan yo.</p>
+      <span>Matye 18:20</span>
+    </div>
+  </div>
+</section>
+
+<section class="schedule" id="ore">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Chak semèn</span>
+      <h2>Orè sèvis nou yo</h2>
+    </div>
+    <div class="schedule-band">
+      <div class="schedule-item highlight">
+        <h3>Sèvis Sabat</h3>
+        <span class="time">Samdi, 8è00 – 11è00 AM</span>
+        <p>Lekòl Sabat ak Kilt Adorasyon — predikasyon, chan ak lapriyè ansanm.</p>
+      </div>
+      <div class="schedule-item">
+        <h3>Priyè Mèkredi</h3>
+        <span class="time">Mèkredi, 7è00 – 8è00 PM</span>
+        <p>Yon moman lapriyè ak refleksyon nan mitan semèn nan.</p>
+      </div>
+      <div class="schedule-item">
+        <h3>Akèy Sabat</h3>
+        <span class="time">Vandredi, 7è00 – 8è00 PM</span>
+        <p>Vèspre pou akeyi Sabat la nan lapriyè ak louwanj.</p>
+      </div>
+    </div>
+    <p style="margin-top:18px; font-size:14px; color:#6B7580;">Orè yo ka chanje pou okazyon espesyal — kontakte legliz la pou konfime.</p>
+  </div>
+</section>
+
+<section class="departments" id="depatman">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Ansanm nou sèvi</span>
+      <h2>Depatman legliz la</h2>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+
+    <div class="dept-group">
+      <span class="dept-group-title">Adorasyon ak fòmasyon espirityèl</span>
+      <div class="dept-grid">
+        <div class="dept-card">
+          <h3>Lekòl Sabat</h3>
+          <p>Klas etid Labib chak Samdi maten, divize pa gwoup laj — soti nan pi piti yo rive adilt.</p>
+        </div>
+        <div class="dept-card">
+          <h3>Ministè Pèsonèl</h3>
+          <p>Evanjelizasyon, vizit ak sipò pou pataje mesaj lespwa a nan katye a.</p>
+        </div>
+        <div class="dept-card">
+          <h3>Ministè Lapriyè</h3>
+          <p>Gwoup lapriyè ak koòdinasyon semèn priyè pou legliz la.</p>
+        </div>
+        <div class="dept-card">
+          <h3>Mizik ak Louwanj</h3>
+          <p>Koral, gwoup chantè ak mizisyen k'ap dirije adorasyon pandan sèvis yo.</p>
+        </div>
+        <div class="dept-card">
+          <h3>Piblikasyon</h3>
+          <p>Distribisyon liv ak materyèl ki ede moun grandi nan lafwa yo.</p>
+        </div>
+        <div class="dept-card">
+          <h3>Libète Relijye</h3>
+          <p>Sansibilizasyon sou libète konsyans ak dwa relijye moun yo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="dept-group">
+      <span class="dept-group-title">Ministè pou fanmi ak gwoup laj</span>
+      <div class="dept-grid">
+        <div class="dept-card">
+          <h3>Ministè Timoun</h3>
+          <p>Aksèy ak ansèyman adapte pou timoun piti yo pandan sèvis yo.</p>
+        </div>
+        <div class="dept-card">
+          <h3>Ministè Fanmi</h3>
+          <p>Sipò ak fòmasyon pou ranfòse relasyon nan fanmi yo.</p>
+        </div>
+        <div class="dept-card">
+          <h3>Ministè Fanm</h3>
+          <p>Rankont, sèvis ak fòmasyon espirityèl pou fanm legliz la.</p>
+        </div>
+        <div class="dept-card">
+          <h3>Ministè Gason</h3>
+          <p>Kominyon, sèvis ak angajman pou gason nan legliz ak nan kominote a.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="dept-group">
+      <span class="dept-group-title">Jenès Adventis (AJ) — klib yo</span>
+      <div class="dept-grid">
+        <div class="dept-card">
+          <h3>Klib Avantirye</h3>
+          <p>Pou pi piti timoun yo — aktivite ak valè debaz nan lafwa a.</p>
+        </div>
+        <div class="dept-card">
+          <h3>Klib Eklerè</h3>
+          <p>Avanti, sèvis kominotè ak fòmasyon karaktè pou timoun ak preadolesan.</p>
+        </div>
+        <div class="dept-card">
+          <h3>Klib Anbasadè</h3>
+          <p>Fòmasyon ak angajman pou adolesan k'ap devlope lidèchip yo.</p>
+        </div>
+        <div class="dept-card">
+          <h3>Klib Senyò</h3>
+          <p>Kominyon ak sèvis pou jèn adilt ak manm ki pi gran nan gwoup jenès la.</p>
+        </div>
+        <div class="dept-card">
+          <h3>Klib Chef Gid</h3>
+          <p>Fòmasyon pou moun k'ap vin ankadrè ak gid pou lòt jèn yo.</p>
+        </div>
+        <div class="dept-card">
+          <h3>Klib Leaders</h3>
+          <p>Devlopman lidèchip pou jèn k'ap sèvi nan diferan depatman legliz la.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="dept-group">
+      <span class="dept-group-title">Sèvis ak administrasyon</span>
+      <div class="dept-grid">
+        <div class="dept-card">
+          <h3>Sèvis Kominotè (Dorcas)</h3>
+          <p>Èd pratik pou fanmi nan bezwen — rad, manje ak sipò nan katye a.</p>
+        </div>
+        <div class="dept-card">
+          <h3>Ministè Sante</h3>
+          <p>Sansibilizasyon sou sante ak yon lavi ekilibre pou legliz ak katye a.</p>
+        </div>
+        <div class="dept-card">
+          <h3>Kominikasyon</h3>
+          <p>Enfòmasyon, medya ak kontak ant legliz la ak kominote a.</p>
+        </div>
+        <div class="dept-card">
+          <h3>Edikasyon</h3>
+          <p>Sipò pou pwogram edikasyon relijye ak akademik pou manm yo.</p>
+        </div>
+        <div class="dept-card">
+          <h3>Jesyon Byen (Stewardship)</h3>
+          <p>Ansèyman sou dim, ofrann ak jan pou jere resous Bondye ban nou.</p>
+        </div>
+        <div class="dept-card">
+          <h3>Dyak ak Dyakès</h3>
+          <p>Sèvis pratik pandan sèvis yo — akèy, òd ak sipò materyèl legliz la.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="events" id="evenman">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">A venir</span>
+      <h2>Evènman k'ap vini</h2>
+    </div>
+    <div class="event-row">
+      <div class="event-date">Samdi 20 Septanm</div>
+      <div class="event-body">
+        <h3>Semèn Priyè</h3>
+        <p>Yon semèn konsakre a lapriyè ak refleksyon espirityèl pou tout legliz la.</p>
+      </div>
+    </div>
+    <div class="event-row">
+      <div class="event-date">Samdi 4 Oktòb</div>
+      <div class="event-body">
+        <h3>Jounen Jenès</h3>
+        <p>Pwogram espesyal òganize pa depatman Jenès Adventis la.</p>
+      </div>
+    </div>
+    <div class="event-row">
+      <div class="event-date">Samdi 18 Oktòb</div>
+      <div class="event-body">
+        <h3>Batèm</h3>
+        <p>Selebrasyon batèm pou manm ki fin prepare yo.</p>
+      </div>
+    </div>
+    <p style="margin-top:22px; font-size:14px; color:#6B7580;">Dat sa yo se egzanp — ranplase yo ak evènman reyèl legliz la.</p>
+  </div>
+</section>
+
+<section class="giving">
+  <div class="wrap">
+    <div>
+      <span class="tag" style="color:var(--gold-soft);">Sipò</span>
+      <h2>Bay dim ak ofrann</h2>
+      <p>Dim ak ofrann ede legliz la kontinye misyon li, sipòte depatman yo ak ede fanmi nan bezwen. Mèsi pou jenerozite ou.</p>
+    </div>
+    <div class="giving-box">
+      <h3>Fason pou bay</h3>
+      <ul>
+        <li>Nan men trezorye legliz la, apre sèvis Samdi</li>
+        <li>Anvlòp dim disponib nan antre legliz la</li>
+        <li>Kontakte legliz la pou lòt opsyon</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="kontak">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="section-head">
+        <span class="tag">Vin jwenn nou</span>
+        <h2>Kote ak lè pou kontakte nou</h2>
+      </div>
+      <dl class="contact-info">
+        <dt>Adrès</dt>
+        <dd>Saint-Marc, Haïti</dd>
+        <dt>Telefòn</dt>
+        <dd>[Mete nimewo telefòn legliz la]</dd>
+        <dt>Imèl</dt>
+        <dd>hoobertleclerc@gmail.com <span style="color:#8A8F80;">(tanporè — ranplase l ak imèl legliz la)</span></dd>
+        <dt>Pastè</dt>
+        <dd>[Non pastè a]</dd>
+      </dl>
+    </div>
+    <div class="map-plate">
+      Espas pou kat jeyografik — ajoute pozisyon egzat legliz la sou Google Maps isit la.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <span class="brand-text" style="display:flex; align-items:center; gap:12px;">
+        <img src="logo.png" alt="" style="width:34px;height:34px;object-fit:contain;">
+        <span>Église Adventiste du 7ème Jour Jérusalem<br><small style="color:#A9B4B9;">Saint-Marc, Haïti</small></span>
+      </span>
+      <ul class="foot-links">
+        <li><a href="#byenveni">Byenveni</a></li>
+        <li><a href="#ore">Orè</a></li>
+        <li><a href="#depatman">Depatman</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </div>
+    <div>© 2026 Église Adventiste du 7ème Jour Jérusalem, Saint-Marc. Tout dwa rezève.</div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+
+</body>
+  </html>

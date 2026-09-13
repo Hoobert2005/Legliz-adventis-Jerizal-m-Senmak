@@ -55,6 +55,16 @@
     *{ animation: none !important; transition: none !important; }
   }
 
+  .reveal{
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .reveal.visible{
+    opacity: 1;
+    transform: none;
+  }
+
   header{
     position: sticky;
     top: 0;
@@ -121,10 +131,13 @@
     content:''; display:block;
     width: 24px; height: 2px; background: var(--blue-deep);
     position: relative;
-    transition: transform .2s ease;
+    transition: transform .25s ease, top .25s ease, background .25s ease;
   }
   .nav-toggle span::before{ position:absolute; top:-7px; }
   .nav-toggle span::after{ position:absolute; top:7px; }
+  .nav-toggle.open span{ background: transparent; }
+  .nav-toggle.open span::before{ top:0; transform: rotate(45deg); background: var(--blue-deep); }
+  .nav-toggle.open span::after{ top:0; transform: rotate(-45deg); background: var(--blue-deep); }
 
   .hero{
     position: relative;
@@ -329,6 +342,11 @@
     background: var(--paper);
     padding: 26px 24px;
     border-top: 3px solid var(--blue-mid);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .dept-card:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(22,50,79,0.10);
   }
   .dept-group:nth-child(2) .dept-card{ border-top-color: var(--gold); }
   .dept-group:nth-child(3) .dept-card{ border-top-color: var(--green); }
@@ -454,12 +472,21 @@
       top: 100%; left:0; right:0;
       background: var(--paper);
       flex-direction: column;
-      padding: 18px 28px 26px;
+      padding: 0 28px;
       gap: 16px;
       border-bottom: 1px solid var(--line);
-      display:none;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      pointer-events: none;
+      transition: max-height .35s ease, opacity .3s ease, padding .35s ease;
     }
-    nav.links.open{ display:flex; }
+    nav.links.open{
+      max-height: 320px;
+      opacity: 1;
+      padding: 18px 28px 26px;
+      pointer-events: auto;
+    }
     .nav-toggle{ display:block; }
     .dept-grid{ grid-template-columns: 1fr; }
     .hero{ padding: 70px 0 100px; }
@@ -508,7 +535,7 @@
 <section class="welcome" id="byenveni">
   <div class="wrap welcome-grid">
     <div>
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="tag">Byenveni</span>
         <h2>Nou kontan wè ou pami nou</h2>
       </div>
@@ -516,7 +543,7 @@
       <p>Kit ou se yon manm depi lontan, kit se premye fwa ou ap vizite nou, pòt legliz la louvri pou ou. Vin adore ansanm avèk nou, tande Pawòl la, epi jwenn yon fanmi.</p>
       <a class="btn btn-primary" href="#depatman">Dekouvri depatman yo</a>
     </div>
-    <div class="verse-block">
+    <div class="verse-block reveal">
       <p>Kote de oswa twa moun sanble nan non mwen, mwen la nan mitan yo.</p>
       <span>Matye 18:20</span>
     </div>
@@ -525,22 +552,22 @@
 
 <section class="schedule" id="ore">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="tag">Chak semèn</span>
       <h2>Orè sèvis nou yo</h2>
     </div>
     <div class="schedule-band">
-      <div class="schedule-item highlight">
+      <div class="schedule-item highlight reveal">
         <h3>Sèvis Sabat</h3>
         <span class="time">Samdi, 8è00 – 11è00 AM</span>
         <p>Lekòl Sabat ak Kilt Adorasyon — predikasyon, chan ak lapriyè ansanm.</p>
       </div>
-      <div class="schedule-item">
+      <div class="schedule-item reveal">
         <h3>Priyè Mèkredi</h3>
         <span class="time">Mèkredi, 7è00 – 8è00 PM</span>
         <p>Yon moman lapriyè ak refleksyon nan mitan semèn nan.</p>
       </div>
-      <div class="schedule-item">
+      <div class="schedule-item reveal">
         <h3>Akèy Sabat</h3>
         <span class="time">Vandredi, 7è00 – 8è00 PM</span>
         <p>Vèspre pou akeyi Sabat la nan lapriyè ak louwanj.</p>
@@ -552,7 +579,7 @@
 
 <section class="departments" id="depatman">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="tag">Ansanm nou sèvi</span>
       <h2>Depatman legliz la</h2>
     </div>
@@ -562,27 +589,27 @@
     <div class="dept-group">
       <span class="dept-group-title">Adorasyon ak fòmasyon espirityèl</span>
       <div class="dept-grid">
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Lekòl Sabat</h3>
           <p>Klas etid Labib chak Samdi maten, divize pa gwoup laj — soti nan pi piti yo rive adilt.</p>
         </div>
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Ministè Pèsonèl</h3>
           <p>Evanjelizasyon, vizit ak sipò pou pataje mesaj lespwa a nan katye a.</p>
         </div>
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Ministè Lapriyè</h3>
           <p>Gwoup lapriyè ak koòdinasyon semèn priyè pou legliz la.</p>
         </div>
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Mizik ak Louwanj</h3>
           <p>Koral, gwoup chantè ak mizisyen k'ap dirije adorasyon pandan sèvis yo.</p>
         </div>
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Piblikasyon</h3>
           <p>Distribisyon liv ak materyèl ki ede moun grandi nan lafwa yo.</p>
         </div>
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Libète Relijye</h3>
           <p>Sansibilizasyon sou libète konsyans ak dwa relijye moun yo.</p>
         </div>
@@ -592,19 +619,19 @@
     <div class="dept-group">
       <span class="dept-group-title">Ministè pou fanmi ak gwoup laj</span>
       <div class="dept-grid">
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Ministè Timoun</h3>
           <p>Aksèy ak ansèyman adapte pou timoun piti yo pandan sèvis yo.</p>
         </div>
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Ministè Fanmi</h3>
           <p>Sipò ak fòmasyon pou ranfòse relasyon nan fanmi yo.</p>
         </div>
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Ministè Fanm</h3>
           <p>Rankont, sèvis ak fòmasyon espirityèl pou fanm legliz la.</p>
         </div>
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Ministè Gason</h3>
           <p>Kominyon, sèvis ak angajman pou gason nan legliz ak nan kominote a.</p>
         </div>
@@ -614,27 +641,27 @@
     <div class="dept-group">
       <span class="dept-group-title">Jenès Adventis (AJ) — klib yo</span>
       <div class="dept-grid">
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Klib Avantirye</h3>
           <p>Pou pi piti timoun yo — aktivite ak valè debaz nan lafwa a.</p>
         </div>
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Klib Eklerè</h3>
           <p>Avanti, sèvis kominotè ak fòmasyon karaktè pou timoun ak preadolesan.</p>
         </div>
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Klib Anbasadè</h3>
           <p>Fòmasyon ak angajman pou adolesan k'ap devlope lidèchip yo.</p>
         </div>
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Klib Senyò</h3>
           <p>Kominyon ak sèvis pou jèn adilt ak manm ki pi gran nan gwoup jenès la.</p>
         </div>
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Klib Chef Gid</h3>
           <p>Fòmasyon pou moun k'ap vin ankadrè ak gid pou lòt jèn yo.</p>
         </div>
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Klib Leaders</h3>
           <p>Devlopman lidèchip pou jèn k'ap sèvi nan diferan depatman legliz la.</p>
         </div>
@@ -644,27 +671,27 @@
     <div class="dept-group">
       <span class="dept-group-title">Sèvis ak administrasyon</span>
       <div class="dept-grid">
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Sèvis Kominotè (Dorcas)</h3>
           <p>Èd pratik pou fanmi nan bezwen — rad, manje ak sipò nan katye a.</p>
         </div>
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Ministè Sante</h3>
           <p>Sansibilizasyon sou sante ak yon lavi ekilibre pou legliz ak katye a.</p>
         </div>
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Kominikasyon</h3>
           <p>Enfòmasyon, medya ak kontak ant legliz la ak kominote a.</p>
         </div>
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Edikasyon</h3>
           <p>Sipò pou pwogram edikasyon relijye ak akademik pou manm yo.</p>
         </div>
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Jesyon Byen (Stewardship)</h3>
           <p>Ansèyman sou dim, ofrann ak jan pou jere resous Bondye ban nou.</p>
         </div>
-        <div class="dept-card">
+        <div class="dept-card reveal">
           <h3>Dyak ak Dyakès</h3>
           <p>Sèvis pratik pandan sèvis yo — akèy, òd ak sipò materyèl legliz la.</p>
         </div>
@@ -676,32 +703,18 @@
 
 <section class="events" id="evenman">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="tag">A venir</span>
       <h2>Evènman k'ap vini</h2>
     </div>
-    <div class="event-row">
-      <div class="event-date">Samdi 20 Septanm</div>
+    <div class="event-row reveal">
+      <div class="event-date">Nan wikenn sa a</div>
       <div class="event-body">
-        <h3>Semèn Priyè</h3>
-        <p>Yon semèn konsakre a lapriyè ak refleksyon espirityèl pou tout legliz la.</p>
+        <h3>Wikenn Klib Eklerè</h3>
+        <p>Yon wikenn espesyal òganize pou Klib Eklerè a — pa manke l!</p>
       </div>
     </div>
-    <div class="event-row">
-      <div class="event-date">Samdi 4 Oktòb</div>
-      <div class="event-body">
-        <h3>Jounen Jenès</h3>
-        <p>Pwogram espesyal òganize pa depatman Jenès Adventis la.</p>
-      </div>
-    </div>
-    <div class="event-row">
-      <div class="event-date">Samdi 18 Oktòb</div>
-      <div class="event-body">
-        <h3>Batèm</h3>
-        <p>Selebrasyon batèm pou manm ki fin prepare yo.</p>
-      </div>
-    </div>
-    <p style="margin-top:22px; font-size:14px; color:#6B7580;">Dat sa yo se egzanp — ranplase yo ak evènman reyèl legliz la.</p>
+    <p style="margin-top:22px; font-size:14px; color:#6B7580;">Nou ap mete lòt evènman apre yo fin òganize.</p>
   </div>
 </section>
 
@@ -712,7 +725,7 @@
       <h2>Bay dim ak ofrann</h2>
       <p>Dim ak ofrann ede legliz la kontinye misyon li, sipòte depatman yo ak ede fanmi nan bezwen. Mèsi pou jenerozite ou.</p>
     </div>
-    <div class="giving-box">
+    <div class="giving-box reveal">
       <h3>Fason pou bay</h3>
       <ul>
         <li>Nan men trezorye legliz la, apre sèvis Samdi</li>
@@ -726,7 +739,7 @@
 <section class="contact" id="kontak">
   <div class="wrap contact-grid">
     <div>
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="tag">Vin jwenn nou</span>
         <h2>Kote ak lè pou kontakte nou</h2>
       </div>
@@ -734,14 +747,12 @@
         <dt>Adrès</dt>
         <dd>Saint-Marc, Haïti</dd>
         <dt>Telefòn</dt>
-        <dd>[Mete nimewo telefòn legliz la]</dd>
+        <dd>+509 3242-0197</dd>
         <dt>Imèl</dt>
         <dd>hoobertleclerc@gmail.com <span style="color:#8A8F80;">(tanporè — ranplase l ak imèl legliz la)</span></dd>
-        <dt>Pastè</dt>
-        <dd>[Non pastè a]</dd>
       </dl>
     </div>
-    <div class="map-plate">
+    <div class="map-plate reveal">
       Espas pou kat jeyografik — ajoute pozisyon egzat legliz la sou Google Maps isit la.
     </div>
   </div>
@@ -770,13 +781,33 @@
   const links = document.getElementById('navLinks');
   toggle.addEventListener('click', () => {
     const open = links.classList.toggle('open');
+    toggle.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', open);
   });
   links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     links.classList.remove('open');
+    toggle.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
   }));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach((el, i) => {
+      el.style.transitionDelay = (i % 6) * 70 + 'ms';
+      io.observe(el);
+    });
+  } else {
+    revealEls.forEach(el => el.classList.add('visible'));
+  }
 </script>
 
 </body>
-  </html>
+          </html>
